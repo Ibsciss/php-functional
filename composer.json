@@ -1,0 +1,54 @@
+{
+    "name": "ibsciss/php-functional",
+    "description": "a reducer implementation in php",
+    "keywords": [
+        "php",
+        "functional programming",
+        "reducer",
+        "transducer"
+    ],
+    "homepage": "https://github.com/ibsciss/php-functional",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": ":Arnaud LEMAIRE",
+            "email": "alemaire@ibsciss.com",
+            "homepage": "http://www.ibsciss.org",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fp\\": "src"
+        },
+        "files": [
+            "src/compose.php",
+            "src/transduce.php",
+            "src/transducer.php",
+            "src/identity.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fp\\Test\\": "tests"
+        },
+        "files": [
+            "tests/trivial_function_makkers.php"
+        ]
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
