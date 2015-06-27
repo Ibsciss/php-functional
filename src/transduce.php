@@ -12,12 +12,12 @@
 
 namespace Fp;
 
-use Fp\reducer\Reduced;
+use Fp\Reducer\Reduced;
 use Fp\Reducer\Reducer;
 
-function transduce(callable $transducer, Reducer $reducer, Array $iterable, $init = null)
+function transduce(callable $transducer, Reducer $Reducer, Array $iterable, $init = null)
 {
-    $internal_reducer = $transducer($reducer);
+    $internal_Reducer = $transducer($reducer);
 
     $accumulator = (is_null($init)) ? $internal_reducer->init() : $init;
     foreach($iterable as $current) {

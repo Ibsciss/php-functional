@@ -12,14 +12,14 @@
 namespace Fp;
 
 use Fp\Reducer\Appending;
-use Fp\reducer\Batching;
-use Fp\reducer\Conjoining;
-use Fp\reducer\Enumerating;
+use Fp\Reducer\Batching;
+use Fp\Reducer\Conjoining;
+use Fp\Reducer\Enumerating;
 use Fp\Reducer\Filtering;
-use Fp\reducer\First;
+use Fp\Reducer\First;
 use Fp\Reducer\Reducer;
 use Fp\Reducer\Mapping;
-use Fp\reducer\SingleResult;
+use Fp\Reducer\SingleResult;
 
 function mapping(Callable $callback)
 {

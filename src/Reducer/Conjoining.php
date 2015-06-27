@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Fp\reducer;
+namespace Fp\Reducer;
 
 
 class Conjoining implements Reducer{

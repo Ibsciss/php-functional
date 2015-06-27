@@ -9,29 +9,32 @@
  * file that was distributed with this source code.
  */
 
-namespace Fp\reducer;
+namespace Fp\Reducer;
 
 
-class Enumerating implements Reducer{
+class First implements Reducer {
 
     protected $next_reducer;
-    protected $counter;
+    protected $callback;
 
-    public function __construct(Reducer $next_reducer, $start = 0)
+    public function __construct(Reducer $next_reducer, Callable $callback)
     {
         $this->next_reducer = $next_reducer;
-        $this->counter = 0;
+        $this->callback = $callback;
     }
 
     public function init()
     {
-        return $this->next_reducer->init();
+        $this->next_reducer->init();
     }
 
     public function step($result, $current)
     {
-        $index = $this->counter++;
-        return $this->next_reducer->step($result, [$index, $current]);
+        if($this->callback->__invoke($current)) {
+            return new Reduced($this->next_reducer->step($result, $current));
+        }
+
+        return $result;
     }
 
     public function complete($result)

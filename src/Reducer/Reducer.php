@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+namespace Fp\Reducer;
+
 interface Reducer {
     public function init();
     public function step($result, $current);

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+namespace Fp\Reducer;
+
 class Filtering implements Reducer{
 
     protected $next_reducer;

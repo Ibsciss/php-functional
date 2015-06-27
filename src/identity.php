@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+namespace Fp;
+
 function identity() {
     return function($value) {
         return $value;
