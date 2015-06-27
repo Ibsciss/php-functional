@@ -11,13 +11,12 @@
 
 namespace Fp\Reducer;
 
-
-class First implements Reducer {
-
+class First implements Reducer
+{
     protected $next_reducer;
     protected $callback;
 
-    public function __construct(Reducer $next_reducer, Callable $callback)
+    public function __construct(Reducer $next_reducer, callable $callback)
     {
         $this->next_reducer = $next_reducer;
         $this->callback = $callback;
@@ -30,7 +29,7 @@ class First implements Reducer {
 
     public function step($result, $current)
     {
-        if($this->callback->__invoke($current)) {
+        if ($this->callback->__invoke($current)) {
             return new Reduced($this->next_reducer->step($result, $current));
         }
 

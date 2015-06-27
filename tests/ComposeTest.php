@@ -15,10 +15,8 @@ use Fp;
 
 class ComposeTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testComposability()
     {
-
         $composed = Fp\compose(plus_one_makker(), square_makker());
 
         $this->assertEquals(10, $composed(3));

@@ -10,14 +10,18 @@
  */
 
 namespace Fp;
+
 /**
  * @param Callable*
+ *
  * @return Closure
  */
-function compose() {
+function compose()
+{
     $functions_list = array_reverse(func_get_args());
-    $composed = function() use ($functions_list) {
+    $composed = function () use ($functions_list) {
         $first_function = array_shift($functions_list);
+
         return array_reduce(
             $functions_list,
             function ($carry, $item) {

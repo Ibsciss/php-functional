@@ -11,9 +11,8 @@
 
 namespace Fp\Reducer;
 
-
-class Appending implements Reducer{
-
+class Appending implements Reducer
+{
     public function init()
     {
         return [];
@@ -22,6 +21,7 @@ class Appending implements Reducer{
     public function step($result, $current)
     {
         $result[] = $current;
+
         return $result;
     }
 

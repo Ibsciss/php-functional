@@ -11,9 +11,8 @@
 
 namespace Fp\Reducer;
 
-
-class Enumerating implements Reducer{
-
+class Enumerating implements Reducer
+{
     protected $next_reducer;
     protected $counter;
 
@@ -31,6 +30,7 @@ class Enumerating implements Reducer{
     public function step($result, $current)
     {
         $index = $this->counter++;
+
         return $this->next_reducer->step($result, [$index, $current]);
     }
 

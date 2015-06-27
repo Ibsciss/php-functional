@@ -11,8 +11,9 @@
 
 namespace Fp;
 
-function identity() {
-    return function($value) {
+function identity()
+{
+    return function ($value) {
         return $value;
     };
 }

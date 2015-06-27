@@ -11,9 +11,8 @@
 
 namespace Fp\Reducer;
 
-
-class Conjoining implements Reducer{
-
+class Conjoining implements Reducer
+{
     public function init()
     {
         return [];
@@ -28,5 +27,4 @@ class Conjoining implements Reducer{
     {
         return $result;
     }
-
 }

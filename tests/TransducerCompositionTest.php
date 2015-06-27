@@ -15,7 +15,6 @@ use Fp;
 
 class TransducerCompositionTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testMappingAndFilteringComposition()
     {
         $transformed =  Fp\transduce(
@@ -57,9 +56,9 @@ class TransducerCompositionTest extends \PHPUnit_Framework_TestCase
         $transformed = Fp\transduce(
             Fp\compose(
                 Fp\mapping(square_makker()),
-                Fp\first(function($x) { return $x > 6; })
+                Fp\first(function ($x) { return $x > 6; })
             ),
-            Fp\single_result(), range(1,6));
+            Fp\single_result(), range(1, 6));
 
         $this->assertEquals(9, $transformed);
     }

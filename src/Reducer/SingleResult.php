@@ -11,9 +11,8 @@
 
 namespace Fp\reducer;
 
-
-class SingleResult implements Reducer {
-
+class SingleResult implements Reducer
+{
     public function init()
     {
         return;
@@ -26,7 +25,7 @@ class SingleResult implements Reducer {
 
     public function complete($result)
     {
-        if($result instanceof Reduced) {
+        if ($result instanceof Reduced) {
             return $result->value();
         }
 

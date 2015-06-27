@@ -11,12 +11,12 @@
 
 namespace Fp\Reducer;
 
-class Filtering implements Reducer{
-
+class Filtering implements Reducer
+{
     protected $next_reducer;
     protected $callback;
 
-    public function __construct(Reducer $next_reducer, Callable $callback)
+    public function __construct(Reducer $next_reducer, callable $callback)
     {
         $this->next_reducer = $next_reducer;
         $this->callback = $callback;
@@ -29,7 +29,7 @@ class Filtering implements Reducer{
 
     public function step($result, $current)
     {
-        if($this->callback->__invoke($current)) {
+        if ($this->callback->__invoke($current)) {
             return $this->next_reducer->step(
                 $result, $current
             );

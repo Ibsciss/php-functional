@@ -11,9 +11,8 @@
 
 namespace Fp\Reducer;
 
-
-class Reduced {
-
+class Reduced
+{
     protected $value;
 
     public function __construct($value)

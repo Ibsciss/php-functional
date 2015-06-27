@@ -21,7 +21,7 @@ use Fp\Reducer\Reducer;
 use Fp\Reducer\Mapping;
 use Fp\Reducer\SingleResult;
 
-function mapping(Callable $callback)
+function mapping(callable $callback)
 {
     $mapping_transducer = function (Reducer $reducer) use ($callback) {
         return new Mapping($reducer, $callback);
@@ -30,9 +30,9 @@ function mapping(Callable $callback)
     return $mapping_transducer;
 }
 
-function filtering(Callable $callback)
+function filtering(callable $callback)
 {
-    $filtering_transducer = function(Reducer $reducer) use ($callback) {
+    $filtering_transducer = function (Reducer $reducer) use ($callback) {
         return new Filtering($reducer, $callback);
     };
 
@@ -41,7 +41,7 @@ function filtering(Callable $callback)
 
 function enumerating($start = 0)
 {
-    $enumerating_transducer = function(Reducer $reducer) use ($start) {
+    $enumerating_transducer = function (Reducer $reducer) use ($start) {
         return new Enumerating($reducer, $start);
     };
 
@@ -50,16 +50,16 @@ function enumerating($start = 0)
 
 function batching($batch_size)
 {
-    $batching_transducer = function(Reducer $reducer) use ($batch_size) {
+    $batching_transducer = function (Reducer $reducer) use ($batch_size) {
         return new Batching($reducer, $batch_size);
     };
 
     return $batching_transducer;
 }
 
-function first(Callable $callback)
+function first(callable $callback)
 {
-    $first_transducer = function(Reducer $reducer) use ($callback) {
+    $first_transducer = function (Reducer $reducer) use ($callback) {
         return new First($reducer, $callback);
     };
 
