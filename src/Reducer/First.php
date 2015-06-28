@@ -1,20 +1,22 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: alemaire
- * Date: 26/06/2015
- * Time: 01:28
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Arnaud LEMAIRE  <alemaire@ibsciss.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
-namespace Fp\reducer;
+namespace Fp\Reducer;
 
-
-class First implements Reducer {
-
+class First implements Reducer
+{
     protected $next_reducer;
     protected $callback;
 
-    public function __construct(Reducer $next_reducer, Callable $callback)
+    public function __construct(Reducer $next_reducer, callable $callback)
     {
         $this->next_reducer = $next_reducer;
         $this->callback = $callback;
@@ -27,7 +29,7 @@ class First implements Reducer {
 
     public function step($result, $current)
     {
-        if($this->callback->__invoke($current)) {
+        if ($this->callback->__invoke($current)) {
             return new Reduced($this->next_reducer->step($result, $current));
         }
 

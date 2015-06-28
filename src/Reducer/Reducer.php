@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Fp;
+namespace Fp\Reducer;
 
-function identity()
+interface Reducer
 {
-    return function ($value) {
-        return $value;
-    };
+    public function init();
+    public function step($result, $current);
+    public function complete($result);
 }

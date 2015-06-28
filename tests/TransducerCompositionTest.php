@@ -1,9 +1,12 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: alemaire
- * Date: 25/06/2015
- * Time: 15:42
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Arnaud LEMAIRE  <alemaire@ibsciss.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Fp\Test;
@@ -12,7 +15,6 @@ use Fp;
 
 class TransducerCompositionTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testMappingAndFilteringComposition()
     {
         $transformed =  Fp\transduce(
@@ -54,9 +56,9 @@ class TransducerCompositionTest extends \PHPUnit_Framework_TestCase
         $transformed = Fp\transduce(
             Fp\compose(
                 Fp\mapping(square_makker()),
-                Fp\first(function($x) { return $x > 6; })
+                Fp\first(function ($x) { return $x > 6; })
             ),
-            Fp\single_result(), range(1,6));
+            Fp\single_result(), range(1, 6));
 
         $this->assertEquals(9, $transformed);
     }

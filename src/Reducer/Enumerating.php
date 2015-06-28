@@ -1,16 +1,18 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: alemaire
- * Date: 25/06/2015
- * Time: 16:44
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Arnaud LEMAIRE  <alemaire@ibsciss.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
-namespace Fp\reducer;
+namespace Fp\Reducer;
 
-
-class Enumerating implements Reducer{
-
+class Enumerating implements Reducer
+{
     protected $next_reducer;
     protected $counter;
 
@@ -28,6 +30,7 @@ class Enumerating implements Reducer{
     public function step($result, $current)
     {
         $index = $this->counter++;
+
         return $this->next_reducer->step($result, [$index, $current]);
     }
 

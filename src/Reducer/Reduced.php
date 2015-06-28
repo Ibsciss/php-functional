@@ -9,11 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Fp;
+namespace Fp\Reducer;
 
-function identity()
+class Reduced
 {
-    return function ($value) {
-        return $value;
-    };
+    protected $value;
+
+    public function __construct($value)
+    {
+        $this->value = $value;
+    }
+
+    public function value()
+    {
+        return $this->value;
+    }
 }
