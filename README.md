@@ -2,12 +2,14 @@
 
 <!--
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/league/:package_name.svg?style=flat-square)](https://packagist.org/packages/league/:package_name)
+[![Total Downloads](https://img.shields.io/packagist/dt/ibsciss/php-functional.svg?style=flat-square)](https://packagist.org/packages/ibsciss/php-functional)
+
 -->
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/ibsciss/php-functional/master.svg?style=flat-square)](https://travis-ci.org/ibsciss/php-functional)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/ibsciss/php-functional.svg?style=flat-square)](https://scrutinizer-ci.com/g/ibsciss/php-functional/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/ibsciss/php-functional.svg?style=flat-square)](https://scrutinizer-ci.com/g/ibsciss/php-functional)
-[![Total Downloads](https://img.shields.io/packagist/dt/ibsciss/php-functional.svg?style=flat-square)](https://packagist.org/packages/ibsciss/php-functional)
+[![Travis CI](https://travis-ci.org/Ibsciss/php-functional.svg?branch=master)](https://travis-ci.org/Ibsciss/php-functional)
+[![Code Coverage](https://scrutinizer-ci.com/g/Ibsciss/php-functional/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Ibsciss/php-functional/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Ibsciss/php-functional/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Ibsciss/php-functional/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/Ibsciss/php-functional/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Ibsciss/php-functional/build-status/master)
 
 A collection of functions and classes to provide some nice functional tools for your projects, with a simple, consistent and well tested api.
 
