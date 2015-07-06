@@ -32,7 +32,8 @@
             "src/compose.php",
             "src/transduce.php",
             "src/transducer.php",
-            "src/identity.php"
+            "src/identity.php",
+            "src/collection.php"
         ]
     },
     "autoload-dev": {
