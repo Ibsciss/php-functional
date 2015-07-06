@@ -1,5 +1,7 @@
 # Php Functional
 
+[![Join the chat at https://gitter.im/Ibsciss/php-functional](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Ibsciss/php-functional?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 <!--
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/league/:package_name.svg?style=flat-square)](https://packagist.org/packages/league/:package_name)
 [![Total Downloads](https://img.shields.io/packagist/dt/ibsciss/php-functional.svg?style=flat-square)](https://packagist.org/packages/ibsciss/php-functional)
