@@ -1,3 +1,7 @@
 composer.lock
 composer.phar
 vendor/
+.idea/
+.DS_Store
+*.iml
+build/
