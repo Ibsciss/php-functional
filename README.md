@@ -2,12 +2,12 @@
 
 <!--
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/league/:package_name.svg?style=flat-square)](https://packagist.org/packages/league/:package_name)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/thephpleague/:package_name/master.svg?style=flat-square)](https://travis-ci.org/thephpleague/:package_name)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/thephpleague/:package_name.svg?style=flat-square)](https://scrutinizer-ci.com/g/thephpleague/:package_name/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/thephpleague/:package_name.svg?style=flat-square)](https://scrutinizer-ci.com/g/thephpleague/:package_name)
-[![Total Downloads](https://img.shields.io/packagist/dt/league/:package_name.svg?style=flat-square)](https://packagist.org/packages/league/:package_name)
 -->
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Build Status](https://img.shields.io/travis/ibsciss/php-functional/master.svg?style=flat-square)](https://travis-ci.org/ibsciss/php-functional)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/ibsciss/php-functional.svg?style=flat-square)](https://scrutinizer-ci.com/g/ibsciss/php-functional/code-structure)
+[![Quality Score](https://img.shields.io/scrutinizer/g/ibsciss/php-functional.svg?style=flat-square)](https://scrutinizer-ci.com/g/ibsciss/php-functional)
+[![Total Downloads](https://img.shields.io/packagist/dt/ibsciss/php-functional.svg?style=flat-square)](https://packagist.org/packages/ibsciss/php-functional)
 
 A collection of functions and classes to provide some nice functional tools for your projects, with a simple, consistent and well tested api.
 
@@ -21,20 +21,31 @@ $ composer require ibsciss/php-functionnal
 
 ## Usage
 
+## Functional helper
+
+### Compose
+
+The compose function give you the ability to create a new functions from existing functions:
+
+```
+compose(f,g,h)(x) == f(g(h(x)))
+```
+
+
 ### Pipelines functions
 
-Pipelines functions are use to apply transformations to a collection, Martin Fowler wrote a [very good introduction (based on ruby)](http://martinfowler.com/articles/collection-pipeline/) to this style of programming.
+Pipelines functions are use to apply transformations to a collection, Martin Fowler wrote a [very good introduction (based on ruby)](http://martinfowler.com/articles/collection-pipeline/) about it.
 
-On the same blog, you'll find another resource to learn [how to refactor your too many loop using pipeline](http://martinfowler.com/articles/refactoring-pipelines.html).
+On the same blog, you'll find another resource to learn [how to refactor your too many loops using pipeline](http://martinfowler.com/articles/refactoring-pipelines.html).
 
-Some functions are wrapper around the native php function, to understand why we have made these wrappers, please see the FAQ (at the end of this document).
+Some functions are wrapper around the native php function, to understand why we have made them please see the [FAQ](#faq).
 
 #### Map
 
 `Fp\map(callable(current), collection)` is a wrapper around the [array_map](http://php.net/manual/fr/function.array-map.php) function (with some nice features, we'll see later).
 
 It build a new array by applying a function to each items of the given collection:
-```
+```php
 //square each item of the collection
 Fp\map(
   function($x) {
@@ -47,8 +58,8 @@ Fp\map(
 
 `Fp\filter(callable(current), collection)` is a wrapper around the [array_filter](http://php.net/manual/fr/function.array-filter.php) function (with some nice features we'll see later).
 
-It build a new array containing all item or which the given callback has return true:
-```
+It build a new array containing all items on which the given callback has return true:
+```php
 //return even values from the collection
 Fp\filter(
   function($x) {
@@ -62,9 +73,8 @@ Fp\filter(
 
 `Fp\reduce(callable(carry, current), collection, init)` is a wrapper around the [array_reduce](http://php.net/manual/fr/function.array-reduce.php) function (with some nice features, we'll see later). 
 
-It reduce to a single value a collection by passing each item to the given callback, the callback returning value is returned for the next call (for the first call, the init value is provided instead).
-
-```
+It reduce a collection to a single value by passing each item to the given callback. The callback returning value is returned for the next call (for the first call, the init value is provided instead).
+```php
 //sum values of the collection
 Fp\reduce(
   function($carry, $item) {
@@ -77,9 +87,9 @@ Fp\reduce(
 
 #### Chaining
 
-A nice feature of the library is the possibility to chain operations. For this you need to use the `Fp\collection(collection)`:
+You can chain operations by using the `Fp\collection(collection)` function (don't forget the `values()` call to get the results:
  
-```
+```php
 //squared even values from the given collection
 Fp\collection([1,2,3,4])
   ->filter(
@@ -90,8 +100,6 @@ Fp\collection([1,2,3,4])
   )
   ->values();  
 ```
-
-**Don't forget to call the `values()` method to get the final array**
 
 ### collection transformer transducers 
 
