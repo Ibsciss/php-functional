@@ -19,7 +19,7 @@ use Fp\Reducer\Filtering;
 use Fp\Reducer\First;
 use Fp\Reducer\Reducer;
 use Fp\Reducer\Mapping;
-use Fp\reducer\Termination\SingleResult;
+use Fp\Reducer\Termination\SingleResult;
 
 function mapping(callable $callback)
 {
