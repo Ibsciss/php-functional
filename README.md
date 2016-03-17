@@ -13,7 +13,8 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Ibsciss/php-functional/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Ibsciss/php-functional/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/Ibsciss/php-functional/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Ibsciss/php-functional/build-status/master)
 
-A collection of functions and classes to provide some nice functional tools for your projects, with a simple, consistent and well tested api.
+A collection of functions and classes to provide some nice functional tools for your projects, with a simple, **consistent** and well tested api.
+Really useful to build data processing algorithms in a breeze.
 
 ## Install
 
@@ -35,34 +36,30 @@ The compose function give you the ability to create a new functions from existin
 compose(f,g,h)(x) == f(g(h(x)))
 ```
 
-
 ### Pipelines functions
 
-Pipelines functions are use to apply transformations to a collection, Martin Fowler wrote a [very good introduction (based on ruby)](http://martinfowler.com/articles/collection-pipeline/) about it.
-
+Pipelines functions are useful to apply transformations to collections, Martin Fowler wrote a [very good introduction (based on ruby)](http://martinfowler.com/articles/collection-pipeline/) about it.
 On the same blog, you'll find another resource to learn [how to refactor your too many loops using pipeline](http://martinfowler.com/articles/refactoring-pipelines.html).
 
-Some functions are wrapper around the native php function, to understand why we have made them please see the [FAQ](#faq).
+The `map`, `filter` and `reduce` functions are wrapper around the native php function, to understand why we have made them please see the [FAQ](#faq).
 
 #### Map
 
-`Fp\map(callable(current), collection)` is a wrapper around the [array_map](http://php.net/manual/fr/function.array-map.php) function (with some nice features, we'll see later).
+Apply a function to each item of a collection to create a new array.
 
-It build a new array by applying a function to each items of the given collection:
 ```php
 //square each item of the collection
 Fp\map(
   function($x) {
-    return pow($x, 2);
+    return pow($x, 2); //square function
   }, [1,2,3]
 ); //return [1,4,9,16]
 ```
 
 #### Filter
 
-`Fp\filter(callable(current), collection)` is a wrapper around the [array_filter](http://php.net/manual/fr/function.array-filter.php) function (with some nice features we'll see later).
+Build an array composed with items that returns true when passed in the given callback.
 
-It build a new array containing all items on which the given callback has return true:
 ```php
 //return even values from the collection
 Fp\filter(
@@ -75,9 +72,9 @@ Fp\filter(
 
 #### Reduce
 
-`Fp\reduce(callable(carry, current), collection, init)` is a wrapper around the [array_reduce](http://php.net/manual/fr/function.array-reduce.php) function (with some nice features, we'll see later). 
+It makes an accumulation by passing each item to the given callback.
+The callback returning value is returned for the next call (an init value is provided for the first call).
 
-It reduce a collection to a single value by passing each item to the given callback. The callback returning value is returned for the next call (for the first call, the init value is provided instead).
 ```php
 //sum values of the collection
 Fp\reduce(
@@ -91,7 +88,7 @@ Fp\reduce(
 
 #### Chaining
 
-You can chain operations by using the `Fp\collection(collection)` function (don't forget the `values()` call to get the results:
+You can chain operations by using the `Fp\collection(collection)` function (don't forget to call `values()` to get the results):
  
 ```php
 //squared even values from the given collection
@@ -105,7 +102,14 @@ Fp\collection([1,2,3,4])
   ->values();  
 ```
 
-### collection transformer transducers 
+### Collection transducers
+
+With classical pipeline functions, you have to iterate the whole collection for each step of the transformation
+and create an intermediate collection which is a massive waste in memory usage.
+
+Moreover you can't really extract a step to use it in other contexts which is bad for code reuse.
+
+To tackle these downsides of classic pipeline function, the functional world come with a nice solution: `tranducers`.
 
 #### Mapping
 like map
