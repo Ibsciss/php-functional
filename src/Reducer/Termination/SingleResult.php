@@ -9,24 +9,29 @@
  * file that was distributed with this source code.
  */
 
-namespace Fp\Reducer;
+namespace Fp\reducer\Termination;
 
-class Appending implements Reducer
+use Fp\reducer\Reduced;
+use Fp\reducer\Reducer;
+
+class SingleResult implements Reducer
 {
     public function init()
     {
-        return [];
+        return;
     }
 
     public function step($result, $current)
     {
-        $result[] = $current;
-
-        return $result;
+        return new Reduced($current);
     }
 
     public function complete($result)
     {
+        if ($result instanceof Reduced) {
+            return $result->value();
+        }
+
         return $result;
     }
 }

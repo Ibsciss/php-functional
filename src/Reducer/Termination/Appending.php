@@ -9,9 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Fp\Reducer;
+namespace Fp\Reducer\Termination;
 
-class Conjoining implements Reducer
+use Fp\Reducer\Reducer;
+
+class Appending implements Reducer
 {
     public function init()
     {
@@ -20,7 +22,9 @@ class Conjoining implements Reducer
 
     public function step($result, $current)
     {
-        return array_merge($result, [$current]);
+        $result[] = $current;
+
+        return $result;
     }
 
     public function complete($result)

@@ -9,26 +9,24 @@
  * file that was distributed with this source code.
  */
 
-namespace Fp\reducer;
+namespace Fp\Reducer\Termination;
 
-class SingleResult implements Reducer
+use Fp\Reducer\Reducer;
+
+class Conjoining implements Reducer
 {
     public function init()
     {
-        return;
+        return [];
     }
 
     public function step($result, $current)
     {
-        return new Reduced($current);
+        return array_merge($result, [$current]);
     }
 
     public function complete($result)
     {
-        if ($result instanceof Reduced) {
-            return $result->value();
-        }
-
         return $result;
     }
 }
