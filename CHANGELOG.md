@@ -2,7 +2,15 @@
 
 All Notable changes to `php-functional` will be documented in this file
 
-## NEXT - 2015-07-06
+## 2016-03-17
+
+### Added
+- Stateless mixin to dry code
+- WithCallback mixin to dry code
+- move final reducer to a specific `termination` folder
+- improving documentation
+
+## 2015-07-06
 
 ### Added
 - collection for chaining operations

@@ -5,8 +5,8 @@
 <!--
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/league/:package_name.svg?style=flat-square)](https://packagist.org/packages/league/:package_name)
 [![Total Downloads](https://img.shields.io/packagist/dt/ibsciss/php-functional.svg?style=flat-square)](https://packagist.org/packages/ibsciss/php-functional)
-
 -->
+
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Travis CI](https://travis-ci.org/Ibsciss/php-functional.svg?branch=master)](https://travis-ci.org/Ibsciss/php-functional)
 [![Code Coverage](https://scrutinizer-ci.com/g/Ibsciss/php-functional/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Ibsciss/php-functional/?branch=master)
@@ -14,7 +14,8 @@
 [![Build Status](https://scrutinizer-ci.com/g/Ibsciss/php-functional/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Ibsciss/php-functional/build-status/master)
 
 A collection of functions and classes to provide some nice functional tools for your projects, with a simple, **consistent** and well tested api.
-Really useful to build data processing algorithms in a breeze.
+
+Especially useful to build data processing algorithms in a breeze.
 
 ## Install
 
@@ -26,6 +27,48 @@ $ composer require ibsciss/php-functionnal
 
 ## Usage
 
+### Simple example
+
+Imagine you want to compute the total VAT amount for october:
+
+Instead of doing things like this:
+
+```php
+function compute_october_vat() {
+    $total_vat_amount = 0;
+    foreach ($invoices as $invoice) {
+        if ($invoice->due_date->format('m') == '10') {
+            $total_vat_amount += $invoice->amount * 0.2;
+        }
+    }
+    return $total_vat_amount;
+}
+```
+
+Or, if you want to try with map / reduce functions:
+
+```php
+function compute_october_vat() {
+    return array_reduce(
+        array_map(
+         function($invoice) { return $invoice->amount * 0.2; },
+         array_filter( $invoices, function($invoice) { return $invoice->due_date->format('m') == '10'; } )
+        ),
+        function($x, $y) { return $x + $y; }, 0);
+}
+```
+
+You can now use a more fluent api:
+
+```php
+function compute_october_vat() {
+    return Fp\collection($invoices)
+        ->filter( function($invoice) { return $invoice->due_date->format('m') == '10'; }; )
+        ->map( function($invoice) { return $invoice->amount * 0.2; }; )
+        ->add();
+}
+```
+
 ## Functional helper
 
 ### Compose
@@ -35,6 +78,18 @@ The compose function give you the ability to create a new functions from existin
 ```
 compose(f,g,h)(x) == f(g(h(x)))
 ```
+
+A practical example:
+
+```php
+$plus_one = function($x) { return $x + 1; };
+$square = function($x) { return pow($x, 2); };
+
+$plus_one_and_square = Fp\compose($plus_one, $square);
+$plus_one_and_square(2) //return 9
+```
+
+_Of course you can compose as much functions as you want._
 
 ### Pipelines functions
 
