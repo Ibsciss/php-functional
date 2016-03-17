@@ -11,15 +11,15 @@
 
 namespace Fp;
 
-use Fp\Reducer\Appending;
+use Fp\Reducer\Termination\Appending;
 use Fp\Reducer\Batching;
-use Fp\Reducer\Conjoining;
+use Fp\Reducer\Termination\Conjoining;
 use Fp\Reducer\Enumerating;
 use Fp\Reducer\Filtering;
 use Fp\Reducer\First;
 use Fp\Reducer\Reducer;
 use Fp\Reducer\Mapping;
-use Fp\Reducer\SingleResult;
+use Fp\reducer\Termination\SingleResult;
 
 function mapping(callable $callback)
 {

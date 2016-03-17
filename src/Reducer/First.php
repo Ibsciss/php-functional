@@ -13,19 +13,8 @@ namespace Fp\Reducer;
 
 class First implements Reducer
 {
-    protected $next_reducer;
-    protected $callback;
-
-    public function __construct(Reducer $next_reducer, callable $callback)
-    {
-        $this->next_reducer = $next_reducer;
-        $this->callback = $callback;
-    }
-
-    public function init()
-    {
-        $this->next_reducer->init();
-    }
+    use Mixin\Stateless;
+    use Mixin\WithCallback;
 
     public function step($result, $current)
     {
@@ -36,8 +25,4 @@ class First implements Reducer
         return $result;
     }
 
-    public function complete($result)
-    {
-        return $this->next_reducer->complete($result);
-    }
 }
